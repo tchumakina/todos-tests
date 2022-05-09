@@ -27,3 +27,6 @@ There are 4 passed and 4 failed (on purpose) scenarions to show how to analyze f
 ### CI test artifacts
 - run a new Cypress Tests workflow or open [this link](https://tchumakina.github.io/todos-tests/) to get github pages results
 - click on some test name to see detailed results including video of test execution
+
+### Documented test cases
+You can find documented test cases for this project at [wiki page](https://github.com/tchumakina/todos-tests/wiki)
