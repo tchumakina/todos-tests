@@ -1,0 +1,30 @@
+name: Cypress Tests
+
+on: [push]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-20.04
+    name: cypress tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+      - run: npm run build
+      - run: npm test
+        continue-on-error: true
+      - name: Copy videos
+        run: |
+            mkdir public
+            cp -r cypress/videos public/videos
+      - name: Merge test results into one
+        run: npm run report:merge
+      - name: Generate HTML report
+        run: npm run report:generate
+      - name: Deploy report page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
