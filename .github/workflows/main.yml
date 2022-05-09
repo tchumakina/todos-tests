@@ -12,6 +12,7 @@ jobs:
       - uses: bahmutov/npm-install@v1
       - run: npm run build
       - run: npm test
+        continue-on-error: true
       - name: copy videos and screenshots
         run: |
             mkdir public
