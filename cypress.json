@@ -1,3 +1,7 @@
 {
-    "baseUrl": "https://todomvc.com/examples/angular2/"
+    "baseUrl": "https://todomvc.com/examples/angular2/",
+    "reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "configFile": "reporter-config.json"
+    }
 }
