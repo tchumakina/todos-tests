@@ -12,6 +12,14 @@ jobs:
       - uses: bahmutov/npm-install@v1
       - run: npm run build
       - run: npm test
+      - uses: actions/upload-artifact@master
+        with:
+          name: evidences-video
+          path: cypress\videos
+      - uses: actions/upload-artifact@master
+        with:
+          name: evidences-screenshots
+          path: cypress\screenshots
   upload-artifacts:
     runs-on: ubuntu-20.04
     if: ${{ always() }}
@@ -23,4 +31,11 @@ jobs:
             mkdir public
             cp -r cypress\videos public\videos
             cp -r cypress\screenshots public\screenshots
-  
+      - uses: actions/download-artifact@master
+        with:
+          name: evidences-video
+          path: cypress\videos
+      - uses: actions/download-artifact@master
+        with:
+          name: evidences-screenshots
+          path: cypress\screenshots
