@@ -13,10 +13,12 @@ jobs:
       - run: npm run build
       - run: npm test
       - uses: actions/upload-artifact@master
+        if: failure()
         with:
           name: evidences-video
           path: cypress/videos
       - uses: actions/upload-artifact@master
+        if: failure()
         with:
           name: evidences-screenshots
           path: cypress/screenshots
