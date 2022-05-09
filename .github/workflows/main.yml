@@ -14,6 +14,7 @@ jobs:
       - run: npm test
   upload-artifacts:
     runs-on: ubuntu-20.04
+    needs: build-and-test
     name: upload evidence
     steps:
       - name: copy videos and screenshots
